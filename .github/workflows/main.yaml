@@ -10,5 +10,9 @@ jobs:
     uses: ./.github/workflows/test.yaml
   release:
     uses: ./.github/workflows/release.yaml
+    needs: test
+    secrets: inherit
   publish:
     uses: ./.github/workflows/publish.yaml
+    needs: release
+    secrets: inherit
