@@ -42,7 +42,7 @@ logging_use_named_masks = false
 major_on_zero = true
 allow_zero_version = true
 tag_format = "v{version}"
-version_variables = ["src/__init__.py:__version__"]
+version_variables = ["solana_actions/__init__.py:__version__"]
 
 [tool.semantic_release.branches.main]
 match = "(main|master)"
