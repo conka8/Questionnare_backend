@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.0.2 (2024-07-01)
+
+### Fix
+
+* fix: properly update pypoetry on release ([`b86cacb`](https://github.com/xeroc/python-solana-actions/commit/b86cacbf0ebd7a335f21abe49db9e00d1dbe3939))
+
+### Unknown
+
+* Merge branch &#39;develop&#39; ([`c9dbba5`](https://github.com/xeroc/python-solana-actions/commit/c9dbba53bd9525eae6e5c97d13ef0973c3b1b234))
+
 ## v0.0.1 (2024-07-01)
 
 ### Chore
