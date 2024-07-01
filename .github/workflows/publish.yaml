@@ -1,9 +1,7 @@
 name: Pypi release
 
 on:
-  push:
-    branches:
-      - master
+  workflow_call:
 
 jobs:
   release:
