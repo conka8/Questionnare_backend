@@ -18,8 +18,13 @@ coverage = "^7.5.4"
 black = "^24.4.2"
 mypy = "^1.10.1"
 autoflake = "^2.3.1"
-mkdocs-material = "^9.5.27"
 pytest-asyncio = "^0.23.7"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+mkdocs-material = "^9.5.27"
 
 [build-system]
 requires = ["poetry-core"]
