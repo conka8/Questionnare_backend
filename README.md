@@ -2,6 +2,7 @@
 ![pypi](https://img.shields.io/pypi/v/solana-actions.svg)
 ![versions](https://img.shields.io/pypi/pyversions/solana-actions.svg)
 [![documentation](https://readthedocs.org/projects/python-solana-actions/badge/?version=latest)](https://python-solana-actions.readthedocs.org)
+[![Pre-Commit Enabled](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 
 # python-solana-actions
 
