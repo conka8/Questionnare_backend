@@ -1,4 +1,4 @@
-[![.github/workflows/release.yaml](https://github.com/xeroc/python-solana-actions/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/xeroc/python-solana-actions/actions/workflows/release.yaml)
+[![.github/workflows/main.yaml](https://github.com/xeroc/python-solana-actions/actions/workflows/main.yaml/badge.svg?branch=main)](https://github.com/xeroc/python-solana-actions/actions/workflows/main.yaml)
 ![pypi](https://img.shields.io/pypi/v/solana-actions.svg)
 ![versions](https://img.shields.io/pypi/pyversions/solana-actions.svg)
 [![documentation](https://readthedocs.org/projects/python-solana-actions/badge/?version=latest)](https://python-solana-actions.readthedocs.org)
