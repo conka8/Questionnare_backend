@@ -5,11 +5,9 @@ on:
   workflow_call:
 
 jobs:
-
   test:
     runs-on: ubuntu-latest
     steps:
-
       - uses: actions/checkout@v4
 
       # If you wanted to use multiple Python versions, you'd have specify a matrix in the job and

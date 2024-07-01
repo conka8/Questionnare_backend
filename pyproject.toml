@@ -8,6 +8,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+solana = "^0.34.2"
+pydantic = "^2.7.4"
+solders = "^0.21.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
@@ -16,6 +19,7 @@ black = "^24.4.2"
 mypy = "^1.10.1"
 autoflake = "^2.3.1"
 mkdocs-material = "^9.5.27"
+pytest-asyncio = "^0.23.7"
 
 [build-system]
 requires = ["poetry-core"]
