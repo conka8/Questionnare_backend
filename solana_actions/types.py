@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+from typing import List, Literal, Optional
+
 from pydantic import BaseModel
-from typing import List, Optional, Literal
 
 
 class ActionsJson(BaseModel):

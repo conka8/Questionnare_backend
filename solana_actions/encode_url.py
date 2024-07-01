@@ -1,9 +1,13 @@
-from urllib.parse import quote, urlencode
-from pydantic import BaseModel
+# -*- coding: utf-8 -*-
 from typing import Union
+from urllib.parse import urlencode
 
 from .constants import BLINKS_QUERY_PARAM, SOLANA_ACTIONS_PROTOCOL
-from .types import ActionRequestURLFields, BlinkURLFields, SupportedProtocols
+from .types import (
+    ActionRequestURLFields,
+    BlinkURLFields,
+    SupportedProtocols,
+)
 
 
 class EncodeURLError(Exception):

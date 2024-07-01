@@ -1,8 +1,13 @@
+# -*- coding: utf-8 -*-
 import pytest
-from solders.keypair import Keypair
 from solana.rpc.async_api import AsyncClient
+from solders.keypair import Keypair
 from solders.pubkey import Pubkey
-from solana_actions.find_reference import find_reference, FindReferenceError
+
+from solana_actions.find_reference import (
+    FindReferenceError,
+    find_reference,
+)
 
 
 @pytest.fixture

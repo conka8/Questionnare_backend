@@ -1,16 +1,16 @@
-from solana.transaction import Transaction
+# -*- coding: utf-8 -*-
+from typing import List, Optional
+
+from pydantic import BaseModel
 from solders.keypair import Keypair
 from solders.pubkey import Pubkey
-from solana.rpc.commitment import Confirmed
-from typing import List, Optional
-from pydantic import BaseModel
 
-from .types import ActionPostResponse, Reference
-from .constants import MEMO_PROGRAM_ID
 from .action_identity import (
     create_action_identifier_instruction,
     get_action_identity_from_env,
 )
+from .constants import MEMO_PROGRAM_ID
+from .types import ActionPostResponse, Reference
 
 
 class CreatePostResponseError(Exception):
@@ -37,7 +37,7 @@ async def create_post_response(
         try:
             args.action_identity = get_action_identity_from_env()
         except Exception:
-            pass
+            args.action_identity = None
 
     if len(transaction.instructions) <= 0:
         raise CreatePostResponseError("at least 1 instruction is required")

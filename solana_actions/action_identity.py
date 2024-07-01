@@ -1,15 +1,17 @@
+# -*- coding: utf-8 -*-
+from typing import List, Optional, Union
+
 import base58
 import nacl.signing
 from pydantic import BaseModel
+from solana.rpc.async_api import AsyncClient
+from solana.transaction import TransactionInstruction
 from solders.keypair import Keypair
 from solders.pubkey import Pubkey
-from solana.transaction import Transaction, TransactionInstruction
-from solana.rpc.async_api import AsyncClient
-from typing import List, Optional, Union
 
 from .constants import MEMO_PROGRAM_ID, SOLANA_ACTIONS_PROTOCOL
-from .types import Reference
 from .find_reference import find_reference
+from .types import Reference
 
 
 class ActionsIdentitySchema(BaseModel):
@@ -36,9 +38,9 @@ def create_action_identifier_memo(identity: Keypair, reference: Reference) -> st
     )[:64]
 
     identifier = [""] * len(ACTIONS_IDENTITY_SCHEMA.scheme)
-    identifier[ACTIONS_IDENTITY_SCHEMA.scheme["protocol"]] = (
-        ACTIONS_IDENTITY_SCHEMA.protocol
-    )
+    identifier[
+        ACTIONS_IDENTITY_SCHEMA.scheme["protocol"]
+    ] = ACTIONS_IDENTITY_SCHEMA.protocol
     identifier[ACTIONS_IDENTITY_SCHEMA.scheme["identity"]] = str(identity.public_key)
     identifier[ACTIONS_IDENTITY_SCHEMA.scheme["reference"]] = str(reference)
     identifier[ACTIONS_IDENTITY_SCHEMA.scheme["signature"]] = base58.b58encode(
@@ -99,7 +101,7 @@ def validate_action_identifier_memo(
                     ],
                 }
         except Exception:
-            pass
+            return False
     return False
 
 
@@ -120,7 +122,7 @@ async def verify_signature_info_for_identity(
         if confirmed_sig_info["signature"] == sig_info["signature"]:
             return True
     except Exception:
-        pass
+        return False
     return False
 
 
@@ -142,8 +144,8 @@ def create_action_identifier_instruction(
 
 
 def get_action_identity_from_env(env_key: str = "ACTION_IDENTITY_SECRET") -> Keypair:
-    import os
     import json
+    import os
 
     try:
         if env_key not in os.environ:

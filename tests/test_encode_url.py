@@ -1,6 +1,11 @@
-import pytest
-from urllib.parse import urlparse, parse_qs, quote
-from solana_actions.encode_url import encode_url, ActionRequestURLFields, BlinkURLFields
+# -*- coding: utf-8 -*-
+from urllib.parse import parse_qs, urlparse
+
+from solana_actions.encode_url import (
+    ActionRequestURLFields,
+    BlinkURLFields,
+    encode_url,
+)
 
 
 def test_action_request_url_without_params():

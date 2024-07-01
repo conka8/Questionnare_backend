@@ -1,4 +1,6 @@
-from typing import Dict, Any
+# -*- coding: utf-8 -*-
+from typing import Any, Dict
+
 from solana.rpc.async_api import AsyncClient
 from solana.rpc.commitment import Confirmed
 from solders.pubkey import Pubkey

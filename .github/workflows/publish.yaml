@@ -1,4 +1,4 @@
-name: Semantic Release
+name: Pypi release
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Release
-        uses: python-semantic-release/python-semantic-release@master
+      - name: Build and publish to pypi
+        uses: JRubics/poetry-publish@v2.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
