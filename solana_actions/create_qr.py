@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
+
 from pydantic import BaseModel
-from typing import Optional
 
 
 class QROptions(BaseModel):

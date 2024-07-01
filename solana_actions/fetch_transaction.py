@@ -1,12 +1,13 @@
+# -*- coding: utf-8 -*-
 import base64
-import json
 from typing import Any, Dict, Optional, Union
+
+import nacl.signing
 import requests
 from pydantic import BaseModel
 from solana.rpc.async_api import AsyncClient
 from solana.transaction import Transaction
 from solders.pubkey import Pubkey
-import nacl.signing
 
 
 class FetchActionError(Exception):
@@ -43,6 +44,7 @@ async def fetch_transaction(
             "Accept": "application/json",
             "Content-Type": "application/json",
         },
+        timeout=5,
     )
     json_data = response.json()
 

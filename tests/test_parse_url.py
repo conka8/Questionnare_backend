@@ -1,10 +1,13 @@
+# -*- coding: utf-8 -*-
+from urllib.parse import parse_qs, quote, urlparse
+
 import pytest
-from urllib.parse import urlparse, parse_qs, quote
+
 from solana_actions.parse_url import (
-    parse_url,
-    ParseURLError,
     ActionRequestURLFields,
     BlinkURLFields,
+    ParseURLError,
+    parse_url,
 )
 
 

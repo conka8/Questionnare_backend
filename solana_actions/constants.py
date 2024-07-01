@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from typing import Dict
 
 SOLANA_PAY_PROTOCOL = "solana:"
