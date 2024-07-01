@@ -1,0 +1,4 @@
+site_name: Solana Actions in Python
+site_url: https://solana-actions.readthedocs.io
+theme:
+  name: material
