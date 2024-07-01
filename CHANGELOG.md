@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.0.3 (2024-07-01)
+
+### Fix
+
+* fix(ci): seems pipeline does not work with updated tags ([`4c0931c`](https://github.com/xeroc/python-solana-actions/commit/4c0931c23ba7ec8f9c9816566d051f06076164bc))
+
 ## v0.0.2 (2024-07-01)
 
 ### Fix
