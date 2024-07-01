@@ -1,4 +1,4 @@
-name: Test, build and deploy for Test
+name: Test, release and publish
 
 on:
   push:
@@ -8,3 +8,7 @@ on:
 jobs:
   test:
     uses: ./.github/workflows/test.yaml
+  release:
+    uses: ./.github/workflows/release.yaml
+  publish:
+    uses: ./.github/workflows/publish.yaml
