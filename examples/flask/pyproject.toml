@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "solana-actions-flask-example"
+version = "0.1.0"
+description = "An example about how to use solana-actions in python"
+authors = ["Fabian Schuh <mail@xeroc.org>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^3.0.3"
+Flask-Cors = "^4.0.1"
+solana-actions = "^0.0.3"
+solana = "^0.34.2"
+solders = "^0.21.0"
+requests = "^2.32.3"
+pynacl = "^1.5.0"
+base58 = "^2.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
