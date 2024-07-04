@@ -4,8 +4,8 @@ from typing import Any, Dict, Optional, Union
 
 import nacl.signing
 import requests
-from pydantic import BaseModel
-from solana.rpc.async_api import AsyncClient
+from pydantic import BaseModel, ConfigDict
+from solana.rpc.api import Client
 from solana.transaction import Transaction
 from solders.pubkey import Pubkey
 
@@ -18,7 +18,7 @@ class SerializeTransactionError(Exception):
     pass
 
 
-class ActionPostRequest(BaseModel):
+class ActionPostRequest:
     account: str
 
 
@@ -28,11 +28,12 @@ class ActionPostResponse(BaseModel):
 
 
 class ActionPostResponseWithSerializedTransaction(ActionPostResponse):
+    model_config = ConfigDict(arbitrary_types_allowed=True)
     transaction: Transaction
 
 
-async def fetch_transaction(
-    connection: AsyncClient,
+def fetch_transaction(
+    connection: Client,
     link: str,
     fields: ActionPostRequest,
     options: Dict[str, Any] = {},
@@ -53,7 +54,7 @@ async def fetch_transaction(
     if not isinstance(json_data["transaction"], str):
         raise FetchActionError("invalid transaction")
 
-    transaction = await serialize_transaction(
+    transaction = serialize_transaction(
         connection, fields.account, json_data["transaction"], options
     )
 
@@ -62,14 +63,14 @@ async def fetch_transaction(
     )
 
 
-async def serialize_transaction(
-    connection: AsyncClient,
+def serialize_transaction(
+    connection: Client,
     account: Union[str, Pubkey],
     base64_transaction: str,
     options: Dict[str, Any] = {},
 ) -> Transaction:
     if isinstance(account, str):
-        account = Pubkey(account)
+        account = Pubkey.from_string(account)
 
     transaction = Transaction.deserialize(base64.b64decode(base64_transaction))
     signatures = transaction.signatures
@@ -94,7 +95,7 @@ async def serialize_transaction(
             elif sig.pubkey == account:
                 if len(signatures) == 1:
                     transaction.recent_blockhash = (
-                        await connection.get_recent_blockhash(
+                        connection.get_recent_blockhash(
                             commitment=options.get("commitment")
                         )
                     ).value.blockhash
@@ -103,7 +104,7 @@ async def serialize_transaction(
     else:
         transaction.fee_payer = account
         transaction.recent_blockhash = (
-            await connection.get_recent_blockhash(commitment=options.get("commitment"))
+            connection.get_recent_blockhash(commitment=options.get("commitment"))
         ).value.blockhash
 
     return transaction

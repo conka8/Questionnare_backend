@@ -1,7 +1,19 @@
 # -*- coding: utf-8 -*-
 from typing import List, Literal, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
+from solana.transaction import Transaction
+from solders.pubkey import Pubkey
+
+
+# `reference` in the [Solana Actions spec](https://github.com/solana-labs/solana-pay/blob/master/SPEC.md#reference).
+class Reference(Pubkey):
+    ...
+
+
+# `memo` in the [Solana Actions spec](https://github.com/solana-labs/solana-pay/blob/master/SPEC.md#memo
+class Memo(str):
+    ...
 
 
 class ActionsJson(BaseModel):
@@ -55,7 +67,8 @@ class ActionPostRequest(BaseModel):
 
 
 class ActionPostResponse(BaseModel):
-    transaction: str
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+    transaction: Transaction | str
     message: Optional[str] = None
 
 

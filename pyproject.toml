@@ -11,6 +11,9 @@ python = "^3.10"
 solana = "^0.34.2"
 pydantic = "^2.7.4"
 solders = "^0.21.0"
+base58 = "^2.1.1"
+pynacl = "^1.5.0"
+requests = "^2.32.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"

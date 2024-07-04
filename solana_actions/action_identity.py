@@ -4,8 +4,8 @@ from typing import List, Optional, Union
 import base58
 import nacl.signing
 from pydantic import BaseModel
-from solana.rpc.async_api import AsyncClient
-from solana.transaction import TransactionInstruction
+from solana.rpc.api import Client
+from solana.transaction import Instruction
 from solders.keypair import Keypair
 from solders.pubkey import Pubkey
 
@@ -73,7 +73,7 @@ def validate_action_identifier_memo(
                 raise ActionIdentifierError("invalid memo length")
 
             try:
-                memo_identity = Pubkey(
+                memo_identity = Pubkey.from_string(
                     identifier[ACTIONS_IDENTITY_SCHEMA.scheme["identity"]]
                 )
             except ValueError:
@@ -105,8 +105,8 @@ def validate_action_identifier_memo(
     return False
 
 
-async def verify_signature_info_for_identity(
-    connection: AsyncClient, identity: Keypair, sig_info: dict
+def verify_signature_info_for_identity(
+    connection: Client, identity: Keypair, sig_info: dict
 ) -> bool:
     try:
         validated = validate_action_identifier_memo(
@@ -115,8 +115,8 @@ async def verify_signature_info_for_identity(
         if not validated:
             return False
 
-        confirmed_sig_info = await find_reference(
-            connection, Pubkey(validated["reference"])
+        confirmed_sig_info = find_reference(
+            connection, Pubkey.from_string(validated["reference"])
         )
 
         if confirmed_sig_info["signature"] == sig_info["signature"]:
@@ -137,8 +137,10 @@ def create_action_identifier_instruction(
     return {
         "memo": memo,
         "reference": reference,
-        "instruction": TransactionInstruction(
-            program_id=Pubkey(MEMO_PROGRAM_ID), data=memo.encode("utf-8"), keys=[]
+        "instruction": Instruction(
+            program_id=Pubkey.from_string(MEMO_PROGRAM_ID),
+            data=memo.encode("utf-8"),
+            keys=[],
         ),
     }
 
