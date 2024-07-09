@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "solana-actions"
-version = "0.0.3"
+version = "0.1.0"
 description = "Solana Actions library"
 authors = ["Fabian Schuh <mail@xeroc.org>"]
 license = "MIT"

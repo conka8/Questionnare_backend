@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## v0.1.0 (2024-07-09)
+
+### Build
+
+* build: run coverage ([`271eb0c`](https://github.com/xeroc/python-solana-actions/commit/271eb0c253bd5854628b6dcbc06944004c47ce15))
+
+### Chore
+
+* chore: finalize functionality ([`e838dbf`](https://github.com/xeroc/python-solana-actions/commit/e838dbf28f648b717f77c5cb71dc911343d7c420))
+
+### Feature
+
+* feat: implement example in fastapi ([`c49a913`](https://github.com/xeroc/python-solana-actions/commit/c49a9139303584bf40c8777c6670e53884a6751c))
+
+* feat: initial work on the flask app ([`476d88e`](https://github.com/xeroc/python-solana-actions/commit/476d88e5d7e034bd3d83528cd58098d70a9d6e29))
+
+### Fix
+
+* fix(readme): proper links to gh actions ([`2868469`](https://github.com/xeroc/python-solana-actions/commit/28684696af7fb56e6a2c9239fa13a43b8bc8a15a))
+
+* fix(ci): seems pipeline does not work with updated tags ([`bba8656`](https://github.com/xeroc/python-solana-actions/commit/bba865637098f07849e31c082be12b9b4dfae127))
+
+### Unknown
+
+* Merge pull request #2 from xeroc/release/202407091607
+
+Release/202407091607 ([`9261f89`](https://github.com/xeroc/python-solana-actions/commit/9261f8928156e472f6703a5328e3282b5f42ea37))
+
 ## v0.0.3 (2024-07-01)
 
 ### Fix
