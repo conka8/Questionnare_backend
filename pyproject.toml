@@ -104,7 +104,7 @@ skips = ["B101"]
 
 [tool.coverage.run]
 branch = true
-omit = ["tests/*"]
+omit = ["tests/*", "examples/"]
 
 [tool.coverage.report]
 show_missing = true

@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
-import functools
 
-from flask import Flask, jsonify, make_response, request
-from flask_cors import CORS
+import uvicorn
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from solana.rpc.api import Client
 from solana.transaction import Instruction, Transaction
 from solders.compute_budget import set_compute_unit_price
 from solders.instruction import AccountMeta
 from solders.pubkey import Pubkey
 
-from solana_actions.constants import (
-    ACTIONS_CORS_HEADERS,
-    MEMO_PROGRAM_ID,
-)
+from solana_actions.constants import MEMO_PROGRAM_ID
 from solana_actions.create_post_response import (
     CreateActionPostResponseArgs,
     create_post_response,
@@ -22,25 +19,27 @@ from solana_actions.types import ActionPostResponse
 SOLANA_API = "https://api.devnet.solana.com"
 
 
-app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+app = FastAPI()
+
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
-def return_json(f):
-    @functools.wraps(f)
-    def inner(**kwargs):
-        ret = f(**kwargs)
-        response = make_response(jsonify(ret))
-        response.headers.update(ACTIONS_CORS_HEADERS)
-        response.content_type = "application/json"
-        response.status_code = 200
-        return response
-
-    return inner
+@app.middleware("http")
+async def ensure_cors_headers(request: Request, call_next):
+    response = await call_next(request)
+    # response.headers.update(ACTIONS_CORS_HEADERS)
+    # response.content_type = "application/json"
+    return response
 
 
-@app.route("/actions.json", methods=["GET", "OPTIONS"])
-@return_json
+@app.get("/actions.json")
 def actions_json():
     return {
         "rules": [
@@ -58,8 +57,7 @@ def actions_json():
     }
 
 
-@app.route("/api/actions/memo", methods=["GET", "OPTIONS"])
-@return_json
+@app.get("/api/actions/memo")
 def get_actions_memo():
     return {
         "title": "Actions Example - Simple On-chain Memo",
@@ -69,10 +67,9 @@ def get_actions_memo():
     }
 
 
-@app.route("/api/actions/memo", methods=["POST"])
-@return_json
-def post_actions_memo():
-    body = request.get_json(force=True)
+@app.post("/api/actions/memo")
+async def post_actions_memo(request: Request):
+    body = await request.json()
     # NOTE: you may want to do validation here
 
     account = Pubkey.from_string(body["account"])
@@ -108,4 +105,4 @@ def post_actions_memo():
 
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    uvicorn.run(app, port=5000)
