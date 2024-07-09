@@ -1,4 +1,4 @@
-[![.github/workflows/release.yaml](https://github.com/xeroc/python-solana-actions/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/xeroc/python-solana-actions/actions/workflows/release.yaml)
+[![.github/workflows/main.yaml](https://github.com/xeroc/python-solana-actions/actions/workflows/main.yaml/badge.svg?branch=main)](https://github.com/xeroc/python-solana-actions/actions/workflows/main.yaml)
 ![pypi](https://img.shields.io/pypi/v/solana-actions.svg)
 ![versions](https://img.shields.io/pypi/pyversions/solana-actions.svg)
 [![documentation](https://readthedocs.org/projects/python-solana-actions/badge/?version=latest)](https://python-solana-actions.readthedocs.org)
@@ -20,6 +20,13 @@ Full Documentation is available on [python-solana-actions.rtfd.io](https://pytho
 
 - [How to Build Solana Actions](https://youtu.be/kCht01Ycif0)
 - [more resources for Solana Actions and blinks](https://solana.com/solutions/actions)
+
+## Examples
+
+Please find implementation examples in this repo:
+
+- [Using Flask](./examples/flask/)
+- [Using FastAPI](./examples/fastapi/)
 
 ## Grant
 

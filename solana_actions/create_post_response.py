@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+import base64
 from typing import List, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from solders.keypair import Keypair
 from solders.pubkey import Pubkey
 
@@ -18,6 +19,7 @@ class CreatePostResponseError(Exception):
 
 
 class CreateActionPostResponseArgs(BaseModel):
+    model_config = ConfigDict(arbitrary_types_allowed=True)
     fields: ActionPostResponse
     signers: Optional[List[Keypair]] = None
     action_identity: Optional[Keypair] = None
@@ -25,7 +27,7 @@ class CreateActionPostResponseArgs(BaseModel):
     options: Optional[dict] = None
 
 
-async def create_post_response(
+def create_post_response(
     args: CreateActionPostResponseArgs,
 ) -> ActionPostResponse:
     transaction = args.fields.transaction
@@ -48,7 +50,7 @@ async def create_post_response(
         )
         transaction.add(instruction_data["instruction"])
 
-        memo_id = Pubkey(MEMO_PROGRAM_ID)
+        memo_id = Pubkey.from_string(MEMO_PROGRAM_ID)
         non_memo_index = next(
             (
                 i
@@ -81,6 +83,7 @@ async def create_post_response(
         for signer in args.signers:
             transaction.sign(signer)
 
-    return ActionPostResponse(
-        **args.fields.dict(), transaction=transaction.serialize().hex()
+    args.fields.transaction = base64.b64encode(bytes(transaction._solders)).decode(
+        "ascii"
     )
+    return ActionPostResponse(**args.fields.dict())
