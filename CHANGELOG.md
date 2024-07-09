@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v0.2.0 (2024-07-09)
+
+### Feature
+
+* feat: major release
+
+BREAKING CHANGE ([`a3988cc`](https://github.com/xeroc/python-solana-actions/commit/a3988cc041f3b3ce69e8ce55a56b97ef3a258a2f))
+
+### Unknown
+
+* Merge branch &#39;develop&#39; ([`9a43f97`](https://github.com/xeroc/python-solana-actions/commit/9a43f97bfe957e81de74d6300ad0961b652cbd1c))
+
 ## v0.1.0 (2024-07-09)
 
 ### Build
