@@ -25,8 +25,8 @@ Full Documentation is available on [python-solana-actions.rtfd.io](https://pytho
 
 Please find implementation examples in this repo:
 
-- [Using Flask](./examples/flask/)
-- [Using FastAPI](./examples/fastapi/)
+- [Using Flask](https://github.com/xeroc/python-solana-actions/tree/main/examples/flask)
+- [Using FastAPI](https://github.com/xeroc/python-solana-actions/tree/main/examples/fastapi)
 
 ## Grant
 
