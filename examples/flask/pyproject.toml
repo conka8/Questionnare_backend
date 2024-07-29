@@ -5,12 +5,13 @@ description = "An example about how to use solana-actions in python"
 authors = ["Fabian Schuh <mail@xeroc.org>"]
 license = "MIT"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
 Flask = "^3.0.3"
 Flask-Cors = "^4.0.1"
-solana-actions = "^0.0.3"
+solana-actions = "^0.2.0"
 solana = "^0.34.2"
 solders = "^0.21.0"
 requests = "^2.32.3"
