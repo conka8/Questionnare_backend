@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v0.2.1 (2024-07-29)
+
+### Chore
+
+* chore: full links to examples on github ([`a7b473a`](https://github.com/xeroc/python-solana-actions/commit/a7b473acb7626eb2fc75c4a3053732bc2108a387))
+
+### Fix
+
+* fix: bump dependencies in examples #4 ([`3fc1b26`](https://github.com/xeroc/python-solana-actions/commit/3fc1b2622d04bf2ef41c3d42705ca65ce7d93a2e))
+
+### Unknown
+
+* Merge pull request #5 from xeroc/release/202407291307
+
+Release/202407291307 ([`af873af`](https://github.com/xeroc/python-solana-actions/commit/af873afbb9e9962d22956b00f60a0ef4aab27763))
+
 ## v0.2.0 (2024-07-09)
 
 ### Feature
